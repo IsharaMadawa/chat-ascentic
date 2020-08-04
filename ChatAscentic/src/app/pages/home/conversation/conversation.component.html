@@ -7,7 +7,7 @@
 			Chat - {{selectedUser.username}}
 		</div>
 
-		<ul #messageThread class="message-thread" *ngIf="messages.length !== 0">
+		<ul class="message-thread" #scrollMe [scrollTop]="scrollMe.scrollHeight" *ngIf="messages.length !== 0">
 			<li *ngFor="let message of messages" [class.align-right]="alignMessage(message.toUserId)">
 				{{ message.message}}
 			</li>

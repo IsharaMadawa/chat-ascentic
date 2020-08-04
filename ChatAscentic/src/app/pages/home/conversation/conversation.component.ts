@@ -1,19 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormGroup } from "@angular/forms";
-
-/* Importing services starts*/
 import { ChatService } from "./../../../services/chat.service";
 import { SocketService } from "./../../../services/socket.service";
 import { FormService } from "./../../../services/form.service";
 import { DataShareService } from "./../../../services/utils/data-share.service";
-/* Importing services ends*/
-
-/* importing interfaces starts */
 import { MessagesResponse } from "./../../../interfaces/messages-response";
 import { Message } from "./../../../interfaces/message";
 import { User } from "./../../../interfaces/user";
-/* importing interfaces ends */
 
 @Component({
   selector: "app-conversation",
@@ -26,8 +20,6 @@ export class ConversationComponent implements OnInit {
   public selectedUser: User = null;
   public messages: Message[] = [];
   public messageForm: FormGroup;
-  @ViewChild("messageThread", { static: true })
-  private messageContainer: ElementRef;
 
   constructor(
     private router: Router,
@@ -69,7 +61,6 @@ export class ConversationComponent implements OnInit {
           this.selectedUser.id === socketResponse.fromUserId
         ) {
           this.messages = [...this.messages, socketResponse];
-          this.scrollMessageContainer();
         }
       });
   }
@@ -100,22 +91,9 @@ export class ConversationComponent implements OnInit {
       this.messages = [...this.messages, message];
       this.messageForm.reset();
       this.messageForm.enable();
-      this.scrollMessageContainer();
     } catch (error) {
       console.warn(error);
       alert(`Can't send your message`);
-    }
-  }
-
-  scrollMessageContainer(): void {
-    if (this.messageContainer !== undefined) {
-      try {
-        setTimeout(() => {
-          this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
-        }, 100);
-      } catch (error) {
-        console.warn(error);
-      }
     }
   }
 
