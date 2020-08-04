@@ -8,9 +8,24 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+mat-form-field {
+    width: 100%;
+}
+
+.mat-tab-label {
+    width: 50%;
+}
+
+.mat-raised-button {
+    width: 100%;
+}
 
 .justifier {
     padding: 20px;
+}
+
+.header-justify {
+    text-align: center;
 }
 
 .app-heading {
