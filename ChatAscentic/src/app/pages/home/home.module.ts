@@ -5,6 +5,7 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { ConversationModule } from "./conversation/conversation.module";
 import { ChatListModule } from "./chat-list/chat-list.module";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [HomeComponent],
@@ -13,6 +14,7 @@ import { ChatListModule } from "./chat-list/chat-list.module";
     HomeRoutingModule,
     ConversationModule,
     ChatListModule,
-  ]
+    MatToolbarModule,
+  ],
 })
 export class HomeModule {}

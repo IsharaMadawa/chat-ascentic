@@ -8,165 +8,159 @@
     <div class="offset-md-3 col-md-5 justifier">
       <mat-tab-group>
         <mat-tab label="Login">
-            <div class="justifier">
-              <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
-                <div class="form-group">
-                  <label>Username</label>
-                  <input
-                    type="text"
-                    name="username"
-                    class="form-control"
-                    placeholder="Enter your Username"
-                    formControlName="username"
-                    autocomplete="off"
-                  />
-                  <div
-                    class="alert alert-danger feedback"
-                    *ngIf="
-                      !loginForm.controls['username'].valid &&
-                      (loginForm.controls['username'].dirty ||
-                        loginForm.controls['username'].touched)
-                    "
-                  >
-                    <span
-                      *ngIf="loginForm.controls['username'].errors.required"
-                    >
-                      Username is required
-                    </span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Enter your Password"
-                    formControlName="password"
-                  />
-                  <div
-                    class="alert alert-danger feedback"
-                    *ngIf="
-                      loginForm.controls['password'].invalid &&
-                      (loginForm.controls['password'].dirty ||
-                        loginForm.controls['password'].touched)
-                    "
-                  >
-                    <span *ngIf="loginForm.controls['password'].invalid">
-                      Password is invalid
-                    </span>
-                  </div>
-                </div>
-                <div class="alert alert-danger feedback" *ngIf="loginError">
-                  Inavlid Username Password combination.
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-              </form>
-            </div>
+          <div class="justifier">
+            <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+              <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  name="username"
+                  placeholder="Enter your Username"
+                  formControlName="username"
+                  autocomplete="off"
+                />
+                <mat-error
+                  *ngIf="
+                    !loginForm.controls['username'].valid &&
+                    (loginForm.controls['username'].dirty ||
+                      loginForm.controls['username'].touched)
+                  "
+                >
+                  <span *ngIf="loginForm.controls['username'].errors.required">
+                    Username is required
+                  </span>
+                </mat-error>
+              </mat-form-field>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  name="password"
+                  placeholder="Enter your Password"
+                  formControlName="password"
+                  autocomplete="off"
+                />
+                <mat-error
+                  *ngIf="
+                    !loginForm.controls['password'].valid &&
+                    (loginForm.controls['password'].dirty ||
+                      loginForm.controls['password'].touched)
+                  "
+                >
+                  <span *ngIf="loginForm.controls['password'].invalid">
+                    Password is invalid
+                  </span>
+                </mat-error>
+              </mat-form-field>
+              <div class="alert alert-danger feedback" *ngIf="loginError">
+                Invalid Username Password combination.
+              </div>
+              <br />
+              <br />
+              <br />
+              <div class="form-group">
+                <button mat-raised-button color="primary">Login</button>
+              </div>
+            </form>
+          </div>
         </mat-tab>
 
         <mat-tab label="Registration">
-          
-            <div class="justifier">
-              <form
-                (ngSubmit)="register()"
-                [formGroup]="registrationForm"
-                novalidate
+          <div class="justifier">
+            <form
+              (ngSubmit)="register()"
+              [formGroup]="registrationForm"
+              novalidate
+            >
+              <mat-form-field class="example-full-width">
+                <mat-label>Username</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  name="username"
+                  placeholder="Enter your Username"
+                  formControlName="username"
+                  autocomplete="off"
+                />
+                <mat-error
+                  *ngIf="
+                    !registrationForm.controls['username'].valid &&
+                    (registrationForm.controls['username'].dirty ||
+                      registrationForm.controls['username'].touched)
+                  "
+                >
+                  <span
+                    *ngIf="
+                      registrationForm.controls['username'].errors.required
+                    "
+                  >
+                    Username is required
+                  </span>
+                </mat-error>
+              </mat-form-field>
+              <mat-error
+                *ngIf="
+                  isuserNameAvailable &&
+                  (registrationForm.controls['username'].dirty ||
+                    registrationForm.controls['username'].touched)
+                "
               >
-                <div class="form-group">
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    name="username"
-                    class="form-control"
-                    placeholder="Enter your Username"
-                    formControlName="username"
-                    autocomplete="off"
-                  />
-                  <div
-                    class="alert alert-danger feedback"
+                <strong>{{
+                  registrationForm.controls["username"].value
+                }}</strong>
+                is already taken.
+              </mat-error>
+              <br />
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input
+                  matInput
+                  type="password"
+                  name="password"
+                  placeholder="Enter your Password"
+                  formControlName="password"
+                />
+                <mat-error
+                  *ngIf="
+                    !registrationForm.controls['password'].valid &&
+                    (registrationForm.controls['password'].dirty ||
+                      registrationForm.controls['password'].touched)
+                  "
+                >
+                  <span
                     *ngIf="
-                      !registrationForm.controls['username'].valid &&
-                      (registrationForm.controls['username'].dirty ||
-                        registrationForm.controls['username'].touched)
+                      registrationForm.controls['password'].errors.required
                     "
                   >
-                    <span
-                      *ngIf="
-                        registrationForm.controls['username'].errors.required
-                      "
-                    >
-                      Username is required
-                    </span>
-                  </div>
-                  <div
-                    class="alert alert-danger feedback"
+                    Password is required
+                  </span>
+                </mat-error>
+                <!-- <span
                     *ngIf="
-                      isuserNameAvailable &&
-                      (registrationForm.controls['username'].dirty ||
-                        registrationForm.controls['username'].touched)
+                      registrationForm.controls['password'].errors.minlength
                     "
                   >
-                    username
-                    <strong>{{
-                      registrationForm.controls["username"].value
-                    }}</strong>
-                    is already taken.
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Enter your Password"
-                    formControlName="password"
-                  />
-                  <div
-                    class="feedback"
-                    *ngIf="
-                      !registrationForm.controls['password'].valid &&
-                      (registrationForm.controls['password'].dirty ||
-                        registrationForm.controls['password'].touched)
-                    "
-                  >
-                    <span
-                      *ngIf="
-                        registrationForm.controls['password'].errors.required
-                      "
-                    >
-                      Password is required
-                    </span>
-                    <span
-                      *ngIf="
-                        registrationForm.controls['password'].errors.minlength
-                      "
-                    >
-                      Password must be 8 characters long, we need another
-                      {{
+                    Password must be 8 characters long, we need another
+                    {{
+                      registrationForm.controls["password"].errors.minlength
+                        .requiredLength -
                         registrationForm.controls["password"].errors.minlength
-                          .requiredLength -
-                          registrationForm.controls["password"].errors.minlength
-                            .actualLength
-                      }}
-                      characters
-                    </span>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary">
-                    Registration
-                  </button>
-                </div>
-              </form>
-            </div>
+                          .actualLength
+                    }}
+                    characters
+                  </span> -->
+              </mat-form-field>
+              <br /><br /><br />
+              <div class="form-group">
+                <button mat-raised-button color="primary">
+                  Registration
+                </button>
+              </div>
+            </form>
+          </div>
         </mat-tab>
       </mat-tab-group>
     </div>

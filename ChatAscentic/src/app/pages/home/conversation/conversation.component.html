@@ -4,7 +4,7 @@
 <div class="massege-wrapper" *ngIf='!messageLoading'>
 	<div class="massege-container">
 		<div class="opposite-user" *ngIf="selectedUser !== null && selectedUser.username">
-			Chatting with {{selectedUser.username}}
+			Chat - {{selectedUser.username}}
 		</div>
 
 		<ul #messageThread class="message-thread" *ngIf="messages.length !== 0">
@@ -12,13 +12,6 @@
 				{{ message.message}}
 			</li>
 		</ul>
-
-		<div  class="message-thread start-chatting-banner" *ngIf="messages.length === 0">
-			<p class="heading">
-				You haven't chatted with {{selectedUser.username}} in a while,
-				<span class="sub-heading">Say Hi.</span>
-			</p>			
-		</div>
 	</div>
 
 	<div class="message-typer">

@@ -37,7 +37,7 @@ export class AuthenticationComponent implements OnInit {
         this.overlayDisplay = false;
       } else {
         this.overlayDisplay = false;
-        //this.getUsernameSuggestion();
+        this.checkUsernameAvailability();
       }
     });
   }
@@ -52,8 +52,7 @@ export class AuthenticationComponent implements OnInit {
         this.router.navigate(["/pages/home"]);
       },
       (error) => {
-        /* Uncomment it, Incase if you like to reset the Login Form. */
-        // this.loginForm.reset();
+        this.loginForm.reset();
         this.overlayDisplay = false;
         this.loginError = true;
       }
@@ -71,15 +70,14 @@ export class AuthenticationComponent implements OnInit {
       },
       (error) => {
         this.overlayDisplay = true;
-        /* Uncomment it, Incase if you like to reset the Login Form. */
-        // this.registrationForm.reset();
+        this.registrationForm.reset();
         alert("Something bad happened; please try again later.");
       }
     );
     //}
   }
 
-  getUsernameSuggestion(): void {
+  checkUsernameAvailability(): void {
     this.registrationForm.controls["username"].valueChanges
       .pipe(
         map((term) => {
