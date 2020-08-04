@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static('./dist/chat-ascentic'));
+app.use(express.static('./dist/ChatAscentic'));
 
 app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, '/dist/chat-ascentic/index.html'));
+    res.sendFile(path.join(__dirname, '/dist/ChatAscentic/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
