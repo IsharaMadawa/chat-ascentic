@@ -34,7 +34,15 @@
     padding: 15px 30px;
 }
 
-.home-container{
-	display: block;
+.home-container {
+    display: block;
     width: 100%;
 }
+
+.nav-link {
+    color: white;
+}
+
+.fill-space {
+	flex: 1 1 auto;
+  }
