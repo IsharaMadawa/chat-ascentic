@@ -103,7 +103,6 @@ export class ChatService {
 							this.router.navigate(['/']);
 							return false;
 						}
-						debugger;
 						localStorage.setItem('username', response.username);
 						observer.next(true);
 					}, (error) => {
