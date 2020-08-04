@@ -2,10 +2,10 @@ const express = require('express');
 
 const app = express();
 
-app.use(express.static('./dist/chat-ascentic'));
+app.use(express.static('./chat-ascentic/dist/'));
 
-app.get('/*', function(req, res) {
-    res.sendFile('index.html', {root: 'dist/chat-ascentic'}
+app.get('*', function(req, res) {
+    res.sendFile('index.html', {root: './chat-ascentic/dist/'}
   );
 });
 
