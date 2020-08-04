@@ -18,8 +18,8 @@ export class AuthenticationComponent implements OnInit {
   public isuserNameAvailable = false;
   public loginError = false;
 
-  private loginForm: FormGroup;
-  private registrationForm: FormGroup;
+  public loginForm: FormGroup;
+  public registrationForm: FormGroup;
   constructor(
     private router: Router,
     private formService: FormService,
