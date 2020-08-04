@@ -1,12 +1,12 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
-app.use(express.static('./chat-ascentic/dist/'));
+app.use(express.static('./dist/chat-ascentic'));
 
-app.get('*', function(req, res) {
-    res.sendFile('index.html', {root: './chat-ascentic/dist/'}
-  );
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '/dist/chat-ascentic/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
